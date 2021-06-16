@@ -3,9 +3,10 @@
       <h1>logo</h1>
       <nav>
           <ul class="gnb clearfix">
-              <li>home</li>
-              <li>company</li>
-              <li>product</li>
+              <li v-for="(item, i) in menu" :key="i">
+                  <router-link :to="menu[i].link">{{menu[i].title}}</router-link>
+              </li>
+              
           </ul>
       </nav>
   </div>
@@ -15,6 +16,13 @@
 
 export default {
     name:'header',
+    data(){
+        return{
+            menu:[{title:'home', link:'/'}, 
+            {title:'company', link:'/company'}, 
+            {title:'product', link:'/product'}]
+        }
+    }
     
 }
 </script>
